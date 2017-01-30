@@ -1,0 +1,119 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+
+spring:
+    profiles:
+        active: dev
+        include: swagger
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:postgresql://localhost:5432/callme
+        name:
+        username: callme
+        password:
+    jpa:
+        database-platform: io.vidyo.domain.util.FixedPostgreSQL82Dialect
+        database: POSTGRESQL
+        show-sql: true
+        properties:
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+            hibernate.javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
+            hibernate.javax.cache.uri: ${spring.cache.jcache.config}
+            hibernate.cache.region.factory_class: io.vidyo.config.jcache.SpringCacheRegionFactory
+    cache:
+        jcache:
+            config: ehcache.xml
+    mail:
+        host: smtpnj.vidyo.com
+        port: 25
+        username:
+        password:
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+liquibase:
+    contexts: dev
+
+server:
+    port: 8080
+
+# ===================================================================
+# Vidyo specific properties
+# ===================================================================
+vidyo:
+    saml:
+        spEntityBaseURL: http://127.0.0.1:8080
+        spEntityId: http://127.0.0.1:8080/io:vidyocallme:sp
+        spAlias: io:vidyocallme:sp
+        idpMetadataXMLPath: /saml/id-dev.xml
+        keystore:
+            path: /saml/samlKeystore.jks
+            password: changeme
+            privateKeyAlias: callme
+            privateKeyPassword: changeme
+            defaultPrivateKeyAlias: callme
+    callMe:
+        appBaseUrl: http://127.0.0.1:8080
+        conferenceTtlMs: 3600000 # milliseconds an agent has to join a conference, 60min in case agent drops and joins
+        tokenTtlSec: 600 # seconds before trinity token expires, 10min
+    twilio:
+        accountSid: ACe268443e43d93dab7ebef303bbe9642f
+        authToken: 2affbbae4f097394d42e781a4fb70f4f
+        from: +15005550006
+
+
+# ===================================================================
+# JHipster specific properties
+# ===================================================================
+
+jhipster:
+    cache: # Hibernate 2nd level cache, used by CacheConfiguration
+        ehcache:
+            maxBytesLocalHeap: 16M
+    security:
+        rememberMe:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 109f4b3c50d7b0df729d299bc6f8e9ef9066971f
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: callme@localhost
+        baseUrl: http://127.0.0.1:8080
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        graphite:
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: callme
+        prometheus:
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            reportFrequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queueSize: 512

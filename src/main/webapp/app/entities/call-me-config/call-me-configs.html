@@ -1,0 +1,76 @@
+<div>
+    <h2 data-translate="callmeApp.callMeConfig.home.title">Call Me Configs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="call-me-config.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="callmeApp.callMeConfig.home.createLabel">
+                        Create new Call Me Config
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span data-translate="callmeApp.callMeConfig.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="appId"><span data-translate="callmeApp.callMeConfig.appKey">App Key</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="emailTo"><span data-translate="callmeApp.callMeConfig.emailTo">Email To</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="smsTo"><span data-translate="callmeApp.callMeConfig.smsTo">Sms To</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="callMeConfig in vm.callMeConfigs track by callMeConfig.id">
+                    <td><a ui-sref="call-me-config-detail({id:callMeConfig.id})">{{callMeConfig.name}}</a></td>
+                    <td>{{callMeConfig.appKey}}</td>
+                    <td>{{callMeConfig.emailTo}}</td>
+                    <td>{{callMeConfig.smsTo}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="call-me-config-demo({id:callMeConfig.appKey})"
+                                    class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-new-window"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="Demo1"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="call-me-config-demo2({id:callMeConfig.appKey})"
+                                    class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-new-window"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="Demo2"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="call-me-config-detail({id:callMeConfig.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="call-me-config.edit({id:callMeConfig.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="call-me-config.delete({id:callMeConfig.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

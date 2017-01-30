@@ -1,0 +1,137 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCallMeConfigLabel" data-translate="callmeApp.callMeConfig.home.createOrEditLabel">Create or edit a Call Me Config</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.callMeConfig.name"
+                    required ng-maxlength="255"
+                    uib-tooltip="the name for this configuration"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.appId" for="field_appId">App Id</label>
+            <input type="text" class="form-control" name="appId" id="field_appId"
+                    ng-model="vm.callMeConfig.appId"
+                    required ng-maxlength="255"
+                    uib-tooltip="the API Key's Application ID from vidyo.io"/>
+            <div ng-show="editForm.appId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.appId.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.appId.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.devKey" for="field_devKey">Dev Key</label>
+            <input type="text" class="form-control" name="devKey" id="field_devKey"
+                    ng-model="vm.callMeConfig.devKey"
+                    required ng-maxlength="255"
+                   uib-tooltip="the API Key's Developer Key from vidyo.io"/>
+            <div ng-show="editForm.devKey.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.devKey.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.devKey.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.referrers" for="field_referrers">Referrers</label>
+            <input type="text" class="form-control" name="referrers" id="field_referrers"
+                    ng-model="vm.callMeConfig.referrers"
+                    ng-maxlength="255"
+                    uib-tooltip="the hostname(s) of the server where the VidyoIOAgent.js script will be called (leave blank to allow any)"/>
+            <div ng-show="editForm.referrers.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.referrers.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.emailTo" for="field_emailTo">Email To</label>
+            <input type="text" class="form-control" name="emailTo" id="field_emailTo"
+                    ng-model="vm.callMeConfig.emailTo"
+                    ng-maxlength="255"
+                    uib-tooltip="the email address to send an email when a customer starts a call for an agent" />
+            <div ng-show="editForm.emailTo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.emailTo.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.emailFrom" for="field_emailFrom">Email From</label>
+            <input type="text" class="form-control" name="emailFrom" id="field_emailFrom"
+                    ng-model="vm.callMeConfig.emailFrom"
+                    ng-maxlength="255"
+                    uib-tooltip="the email address to use as the from address"/>
+            <div ng-show="editForm.emailFrom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.emailFrom.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.emailSubject" for="field_emailSubject">Subject</label>
+            <input type="text" class="form-control" name="emailSubject" id="field_emailSubject"
+                    ng-model="vm.callMeConfig.emailSubject"
+                    ng-maxlength="255"
+                    uib-tooltip="the subject for the email (or body prefix for SMS message)"/>
+            <div ng-show="editForm.emailSubject.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.emailSubject.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="callmeApp.callMeConfig.smsTo" for="field_smsTo">Sms To</label>
+            <input type="text" class="form-control" name="smsTo" id="field_smsTo"
+                    ng-model="vm.callMeConfig.smsTo"
+                    ng-maxlength="15"
+                   uib-tooltip="the SMS phone number including area code to send a message when a customer starts a call (optional)"/>
+            <div ng-show="editForm.smsTo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.smsTo.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="15">
+                    This field cannot be longer than 15 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

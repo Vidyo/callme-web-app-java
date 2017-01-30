@@ -1,0 +1,110 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 data-translate="home.title">Welcome!</h1>
+            <p class="lead" data-translate="home.subtitle">Manage and configure your callme vidyo.io application.</p>
+            <div ng-switch="vm.isAuthenticated()">
+                <div ng-switch-when="false">
+                    You are not logged in. Click <a href="/saml/login">here</a> to login.
+                </div>
+                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                    You are logged in as user "{{vm.account.login}}".
+                </div>
+
+
+                <div ng-switch-when="true">
+                    Steps:<ol>
+                    <li>Create a <a href="/#/call-me-config">call me configuration</a> to get an appKey.</li>
+                    <li>Create a HTML page to get started: </lI>
+                    </ol>
+
+    <!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #4c8317">&lt;!DOCTYPE html&gt;</span>
+ <span style="color: #1e90ff; font-weight: bold">&lt;html&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;head&gt;</span>
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- add this script to your webpage wherever call me functionality is desired --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;http://172.16.2.233:8080/js/VidyoIOAgent.js&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/script&gt;</span>
+
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- the vidyoIOAgent method that will start a call --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">type=</span><span style="color: #aa5500">&quot;text/javascript&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+             <span style="color: #0000aa">function</span> callMe() {
+                 <span style="color: #0000aa">var</span> config = {
+                     appUrl: <span style="color: #aa5500">&quot;http://172.16.2.233:8080&quot;</span>,
+                     appKey: <span style="color: #aa5500">&quot;hnq32BAs&quot;</span>,        <span style="color: #aaaaaa; font-style: italic">// set your appKey here</span>
+                     viewId: <span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span> <span style="color: #aaaaaa; font-style: italic">// set your div where video will be seen</span>
+                 };
+                 vidyoIOAgent(config);
+             }
+         <span style="color: #1e90ff; font-weight: bold">&lt;/script&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;/head&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;body&gt;</span>
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- create a button to invoke a method to get the call started --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;button</span> <span style="color: #1e90ff">onclick=</span><span style="color: #aa5500">&quot;javascript:callMe()&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>Call Me<span style="color: #1e90ff; font-weight: bold">&lt;/button&gt;</span>
+
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- the div where the video session is displayed --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">style=</span><span style="color: #aa5500">&quot;position: absolute; bottom: 0; right: 0;&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+             <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">id=</span><span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span> <span style="color: #1e90ff">style=</span><span style="color: #aa5500">&quot;float: right; width: 854px; height: 480px;&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;/body&gt;</span>
+ <span style="color: #1e90ff; font-weight: bold">&lt;/html&gt;</span>
+</pre>
+
+<br />
+                    or a more complicated example where a YouTube video is displayed while the customer is waiting for an agent:<br /><br />
+                    <!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #4c8317">&lt;!DOCTYPE html&gt;</span>
+ <span style="color: #1e90ff; font-weight: bold">&lt;html&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;head&gt;</span>
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- add this script to your webpage wherever call me functionality is desired --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;http://172.16.2.233:8080/js/VidyoIOAgent.js&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/script&gt;</span>
+
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- the vidyoIOAgent method that will start a call --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">type=</span><span style="color: #aa5500">&quot;text/javascript&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+             <span style="color: #0000aa">function</span> callMe() {
+                 <span style="color: #0000aa">var</span> config = {
+                     appUrl: <span style="color: #aa5500">&quot;http://172.16.2.233:8080&quot;</span>,
+                     appKey: <span style="color: #aa5500">&quot;hnq32BAs&quot;</span>,         <span style="color: #aaaaaa; font-style: italic">// set your appKey here</span>
+                     viewId: <span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span>, <span style="color: #aaaaaa; font-style: italic">// set your div where video will be seen</span>
+                     onUserJoined : <span style="color: #0000aa">function</span>() {
+                         <span style="color: #aaaaaa; font-style: italic">// start a YouTube video while waiting for agent</span>
+                         <span style="color: #00aaaa">document</span>.getElementById(<span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span>).style.display = <span style="color: #aa5500">&quot;none&quot;</span>;
+                         <span style="color: #00aaaa">document</span>.getElementById(<span style="color: #aa5500">&quot;videoFrame&quot;</span>).src=<span style="color: #aa5500">&quot;https://www.youtube.com/embed/7VENzZpJCec?autoplay=1&quot;</span>;
+                     },
+                     onAgentJoined : <span style="color: #0000aa">function</span>() {
+                         <span style="color: #aaaaaa; font-style: italic">// end YouTube video when agent joins</span>
+                         <span style="color: #00aaaa">document</span>.getElementById(<span style="color: #aa5500">&quot;videoFrame&quot;</span>).src=<span style="color: #aa5500">&quot;&quot;</span>;
+                         <span style="color: #00aaaa">document</span>.getElementById(<span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span>).style.display =  <span style="color: #aa5500">&quot;block&quot;</span>;
+                     },
+                     onAgentLeft : <span style="color: #0000aa">function</span>() {
+                         console.log(<span style="color: #aa5500">&quot;agent left&quot;</span>);
+                     },
+                     onCallFailure: <span style="color: #0000aa">function</span>() {
+                         alert(<span style="color: #aa5500">&quot;call failed&quot;</span>);
+                     }
+                 };
+                 vidyoIOAgent(config);
+             }
+         <span style="color: #1e90ff; font-weight: bold">&lt;/script&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;/head&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;body&gt;</span>
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- create a button to invoke a method to get the call started --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;button</span> <span style="color: #1e90ff">onclick=</span><span style="color: #aa5500">&quot;javascript:callMe()&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>Call Me<span style="color: #1e90ff; font-weight: bold">&lt;/button&gt;</span>
+
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- the div where the video session is displayed --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">style=</span><span style="color: #aa5500">&quot;position: absolute; bottom: 0; right: 0;&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+             <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">id=</span><span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span> <span style="color: #1e90ff">style=</span><span style="color: #aa5500">&quot;float: right; width: 854px; height: 480px;&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+
+         <span style="color: #aaaaaa; font-style: italic">&lt;!-- the div for the YouTube video --&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">style=</span><span style="color: #aa5500">&quot;position: absolute; bottom: 0; right: 0;&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+             <span style="color: #1e90ff; font-weight: bold">&lt;iframe</span> <span style="color: #1e90ff">id=</span><span style="color: #aa5500">&quot;videoFrame&quot;</span> <span style="color: #1e90ff">style=</span><span style="color: #aa5500">&quot;float: right; width: 854px; height: 480px;&quot;</span> <span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;&quot;</span> <span style="color: #1e90ff">frameborder=</span><span style="color: #aa5500">&quot;0&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/iframe&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+     <span style="color: #1e90ff; font-weight: bold">&lt;/body&gt;</span>
+ <span style="color: #1e90ff; font-weight: bold">&lt;/html&gt;</span>
+</pre>
+
+                </div>
+
+             </div>
+
+        </div>
+    </div>
+</div>

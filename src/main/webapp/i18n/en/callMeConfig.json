@@ -1,0 +1,31 @@
+{
+    "callmeApp": {
+        "callMeConfig" : {
+            "home": {
+                "title": "Call Me Configs",
+                "createLabel": "Create a new Call Me Config",
+                "createOrEditLabel": "Create or edit a Call Me Config",
+                "search": "Search for Call Me Config"
+            },
+            "created": "A new Call Me Config is created with name {{ param }}",
+            "updated": "A Call Me Config is updated with name {{ param }}",
+            "deleted": "A Call Me Config is deleted with name {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Call Me Config {{ id }}?"
+            },
+            "detail": {
+                "title": "Call Me Config"
+            },
+            "appKey": "App Key",
+            "name": "Name",
+            "appId": "App Id",
+            "devKey": "Dev Key",
+            "referrers": "Referrers",
+            "emailTo": "Email To",
+            "emailFrom": "Email From",
+            "emailSubject": "Email Subject",
+            "smsTo": "Sms To",
+            "owner": "Owner"
+        }
+    }
+}

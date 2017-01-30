@@ -1,0 +1,20 @@
+entity CallMeConfig {
+    id String maxlength(64),
+    appKey String maxlength(64),
+    name String required maxlength(255),
+    appId String required maxlength(255),
+    devKey String required maxlength(255)
+    referrers String maxlength(255),
+    emailTo String maxlength(255),
+    emailFrom String maxlength(255),
+    emailSubject String maxlength(255),
+    smsTo String maxlength(15)
+}
+
+relationship ManyToOne{
+    CallMeConfig{owner} to User
+}
+
+paginate CallMeConfig with pagination
+
+dto * with mapstruct

@@ -1,0 +1,12 @@
+version: '2'
+services:
+    callme-postgresql:
+        container_name: callme-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/callme/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=callme
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

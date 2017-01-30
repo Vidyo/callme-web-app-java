@@ -1,0 +1,109 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overriden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+management:
+    context-path: /management
+    health:
+        mail:
+            enabled: false # When using the MailService, configure an SMTP server and set this to true
+spring:
+    application:
+        name: callme
+    profiles:
+        # The commented value for `active` can be replaced with valid Spring profiles to load.
+        # Otherwise, it will be filled in by gradle when building the WAR file
+        # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
+        active: #spring.profiles.active#
+    jackson:
+        serialization.write_dates_as_timestamps: false
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    messages:
+        basename: i18n/messages
+    mvc:
+        favicon:
+            enabled: false
+    thymeleaf:
+        mode: XHTML
+    velocity:
+        enabled: false
+
+security:
+    basic:
+        enabled: false
+
+server:
+    session:
+        cookie:
+            http-only: true
+
+# ===================================================================
+# Vidyo specific properties
+# ===================================================================
+vidyo:
+    saml:
+        spEntityBaseURL: http://127.0.0.1:8080
+        spEntityId: http://127.0.0.1:8080/io:vidyocallme:sp
+        spAlias: io:vidyocallme:sp
+        idpMetadataXMLPath: /saml/idp.xml
+        keystore:
+            path: /saml/samlKeystore.jks
+            password: changeme
+            privateKeyAlias: callme
+            privateKeyPassword: changeme
+            defaultPrivateKeyAlias: callme
+    callMe:
+        appBaseUrl: http://127.0.0.1:8080
+        conferenceTtlMs: 3600000 # milliseconds an agent has to join a conference, 60min in case agent drops and joins
+        tokenTtlSec: 600 # seconds before trinity token expires, 10min
+    twilio:
+        accountSid: ACe268443e43d93dab7ebef303bbe9642f
+        authToken: 2affbbae4f097394d42e781a4fb70f4f
+        from: +15005550006
+
+# ===================================================================
+# JHipster specific properties
+# ===================================================================
+
+jhipster:
+    async:
+        corePoolSize: 2
+        maxPoolSize: 50
+        queueCapacity: 10000
+    #cors: #By default CORS are not enabled. Uncomment to enable.
+        #allowed-origins: "*"
+        #allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        #allowed-headers: "*"
+        #exposed-headers:
+        #allow-credentials: true
+        #max-age: 1800
+    mail:
+        from: callme@localhost
+    swagger:
+        title: callme API
+        description: callme API documentation
+        version: 0.0.1
+        termsOfServiceUrl:
+        contactName:
+        contactUrl:
+        contactEmail:
+        license:
+        licenseUrl:
+    ribbon:
+        # comma separated list of profiles to show a ribbon on the GUI
+        displayOnActiveProfiles: dev

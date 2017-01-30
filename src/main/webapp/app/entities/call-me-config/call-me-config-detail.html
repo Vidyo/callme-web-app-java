@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="callmeApp.callMeConfig.detail.title">Call Me Config</span> {{vm.callMeConfig.name}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="callmeApp.callMeConfig.name">Name</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.name}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.appId">App Id</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.appId}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.devKey">Dev Key</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.devKey}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.referrers">Referrers</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.referrers}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.emailTo">Email To</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.emailTo}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.emailFrom">Email From</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.emailFrom}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.emailSubject">Email Subject</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.emailSubject}}</span>
+        </dd>
+        <dt><span data-translate="callmeApp.callMeConfig.smsTo">Sms To</span></dt>
+        <dd>
+            <span>{{vm.callMeConfig.smsTo}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="call-me-config-detail.edit({id:vm.callMeConfig.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

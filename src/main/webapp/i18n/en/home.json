@@ -1,0 +1,9 @@
+{
+    "home": {
+        "title": "Welcome!",
+        "subtitle": "Manage and configure your callme vidyo.io application.",
+        "logged": {
+            "message": "You are logged in as user \"{{username}}\"."
+        }
+    }
+}

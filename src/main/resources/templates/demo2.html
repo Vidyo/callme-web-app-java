@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- add this script to your webpage wherever call me functionality is desired -->
+    <script src="http://172.16.2.233:8080/js/VidyoIOAgent.js"></script>
+
+    <!-- the vidyoIOAgent method that will start a call -->
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        function callMe() {
+            // set your appKey here
+            var appKey = /*[[${appKey}]]*/ "hnq32BAs";
+            var config = {
+                appUrl: "http://172.16.2.233:8080",
+                appKey: appKey,
+                viewId: "vidyoIOAgentView", // set your div where video will be seen
+                onUserJoined : function() {
+                    // start a YouTube video while waiting for agent
+                    document.getElementById("vidyoIOAgentView").style.display = "none";
+                    document.getElementById("videoFrame").src="https://www.youtube.com/embed/CcYL9wwKbqw?autoplay=1";
+                },
+                onAgentJoined : function() {
+                    // end YouTube video when agent joins
+                    document.getElementById("videoFrame").src="";
+                    document.getElementById("vidyoIOAgentView").style.display =  "block";
+                },
+                onAgentLeft : function() {
+                    console.log("agent left");
+                },
+                onCallFailure: function() {
+                    alert("call failed");
+                }
+            };
+            vidyoIOAgent(config);
+        }
+        /*]]>*/
+    </script>
+</head>
+<body>
+
+<p>This is a demo with hold-music (a "wait-video") while waiting for an agent.</p>
+<!-- create a button to invoke a method to get the call started -->
+<button onclick="javascript:callMe()">Call Me</button>
+
+<!-- the div where the video session is displayed -->
+<div style="position: absolute; bottom: 0; right: 0;">
+    <div id="vidyoIOAgentView" style="float: right; width: 854px; height: 480px;"></div>
+</div>
+
+<!-- the div for the YouTube video -->
+<div style="position: absolute; bottom: 0; right: 0;">
+    <iframe id="videoFrame" style="float: right; width: 854px; height: 480px;" src="" frameborder="0"></iframe>
+</div>
+</body>
+</html>
