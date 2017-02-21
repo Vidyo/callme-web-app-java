@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- add this script to your webpage wherever call me functionality is desired -->
-    <script src="http://172.16.2.233:8080/js/VidyoIOAgent.js"></script>
+    <script src="https://callme.app.vidyo.io/js/VidyoIOAgent.js"></script>
 
     <!-- the vidyoIOAgent method that will start a call -->
     <script type="text/javascript" th:inline="javascript">
@@ -11,7 +11,7 @@
             // set your appKey here
             var appKey = /*[[${appKey}]]*/ "hnq32BAs";
             var config = {
-                appUrl: "http://172.16.2.233:8080",
+                appUrl: "https://callme.app.vidyo.io",
                 appKey: appKey,
                 viewId: "vidyoIOAgentView" // set your div where video will be seen
             };
@@ -26,6 +26,14 @@
 
 <!-- create a button to invoke a method to get the call started -->
 <button onclick="javascript:callMe()">Call Me</button>
+<br/><br/>
+<p>When the customer presses the Call Me button, you will instantly get an email and/or SMS message which you configured, saying a customer is requesting a video chat. That message contains a link to start the video chat with the customer. While the customer is waiting for you to join, they will see a message "Waiting for agent."</p>
+<p>When you try out the demo, please ensure you are a customer on one computer and an agent on another computer.</p>
+<br/><br/>
+<hr/>
+<p>Be sure to check out the source code of this page (<a href="http://www.computerhope.com/issues/ch000746.htm" target="blank">How?</a>).</p>
+<p>In the source, you will notice we have filled in your appKey for this demo, so adding the same functionality to your website is a matter of a copy and paste!</p>
+<hr/>
 
 <!-- the div where the video session is displayed -->
 <div style="position: absolute; bottom: 0; right: 0;">
