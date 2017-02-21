@@ -1,5 +1,6 @@
 package io.vidyo.service;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
@@ -29,6 +30,7 @@ public class EmailService {
             mailSender.send(mailMessage);
         } catch (MailException me) {
             log.error("Error sending mail to: " + to);
+            log.info(ExceptionUtils.getStackTrace(me));
         }
     }
 }
