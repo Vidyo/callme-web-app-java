@@ -58,8 +58,12 @@ public class CallMeController {
             return callback+"( { \"error\" : \"forbidden\"} )";
         }
 
+        String allowedReferrers = callMeConfig.getReferrers();
+        if (allowedReferrers == null) {
+            allowedReferrers = "";
+        }
         if (!isDemoPage) {
-            String referrers = callMeConfig.getReferrers().toLowerCase();
+            String referrers = allowedReferrers.toLowerCase();
             log.debug("Check for referrers [" + referrers + "], actual is [" + incomingReferrer + "]");
             if (!referrers.contains(incomingHost)) {
                 log.warn("Disallowed referrer: " + incomingReferrer);
