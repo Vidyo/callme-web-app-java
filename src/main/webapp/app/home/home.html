@@ -5,7 +5,10 @@
             <p class="lead" data-translate="home.subtitle">Manage and configure your callme vidyo.io application.</p>
             <div ng-switch="vm.isAuthenticated()">
                 <div ng-switch-when="false">
-                    You are not logged in. Click <a href="/saml/login">here</a> to login.
+                    You are not logged in. Click <a href="/saml/login">here</a> to login <b>using your vidyo.io credentials</b>.
+                    <h2>Introduction</h2>
+                    <p>Callme is a customer engagement tool, based on the <a href="https://vidyo.io" target="_blank">vidyo.io</a> platform, that you can add to any website. You can be easily video chatting with your website visitors with a few snippets of code. For example, when a customer clicks a button to speak with an agent, you (the agent) will be messaged via email or SMS of such a request. You click the link in the message and you can start video chatting immediately. You are just a few steps away from engaging with your customers live via video chat within your very own website!</p>
+
                 </div>
                 <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
@@ -13,22 +16,29 @@
 
 
                 <div ng-switch-when="true">
-                    Steps:<ol>
-                    <li>Create a <a href="/#/call-me-config">call me configuration</a> to get an appKey.</li>
-                    <li>Create a HTML page to get started: </lI>
+                    <h2>Introduction</h2>
+                    <p>Callme is a customer engagement tool, based on the <a href="https://vidyo.io" target="_blank">vidyo.io</a> platform, that you can add to any website. You can be easily video chatting with your website visitors with a few snippets of code. For example, when a customer clicks a button to speak with an agent, you (the agent) will be messaged via email or SMS of such a request. You click the link in the message and you can start video chatting immediately. You are just a few steps away from engaging with your customers live via video chat within your very own website!</p>
+                    <h2>Getting Started</h2>
+                    <p>Before we get started we need a little bit of information to configure your first callme application:</p>
+                    <ol>
+                    <li>Grab an <b>Application ID</b> and <b>Developer Key</b> from your <a href="https://developer.vidyo.io/dashboard#tab_apikey" target="_blank">API Key</a>'s. They are used to create tokens automatically and will always remain hidden.</li>
+                    <li>Create a <a href="/#/call-me-config/new">call me configuration</a>. As you enter the requested information on each field of the form, follow the instructions in the popup.
+                    <li>Try out the demos once you have a <a href="/#/call-me-config">configuration</a> and tweak your configuration before you go live. </li>
+                    <li>From the <a href="/#/call-me-config">list of call me configurations</a>, note the callme <b>App Key</b> as this what will be used to identify the callme configuration on your website.</li>
+                    <li>Follow the instructions in the HTML comments below to setup your website and start video chatting with your customers:</li>
                     </ol>
 
-    <!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #4c8317">&lt;!DOCTYPE html&gt;</span>
+    <!-- HTML generated using hilite.me --><pre style="padding: 20px; margin: 20px; line-height: 125%"><span style="color: #4c8317">&lt;!DOCTYPE html&gt;</span>
  <span style="color: #1e90ff; font-weight: bold">&lt;html&gt;</span>
      <span style="color: #1e90ff; font-weight: bold">&lt;head&gt;</span>
          <span style="color: #aaaaaa; font-style: italic">&lt;!-- add this script to your webpage wherever call me functionality is desired --&gt;</span>
-         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;http://172.16.2.233:8080/js/VidyoIOAgent.js&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/script&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;https://callme.app.vidyo.io/js/VidyoIOAgent.js&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/script&gt;</span>
 
          <span style="color: #aaaaaa; font-style: italic">&lt;!-- the vidyoIOAgent method that will start a call --&gt;</span>
          <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">type=</span><span style="color: #aa5500">&quot;text/javascript&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
              <span style="color: #0000aa">function</span> callMe() {
                  <span style="color: #0000aa">var</span> config = {
-                     appUrl: <span style="color: #aa5500">&quot;http://172.16.2.233:8080&quot;</span>,
+                     appUrl: <span style="color: #aa5500">&quot;https://callme.app.vidyo.io&quot;</span>,
                      appKey: <span style="color: #aa5500">&quot;hnq32BAs&quot;</span>,        <span style="color: #aaaaaa; font-style: italic">// set your appKey here</span>
                      viewId: <span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span> <span style="color: #aaaaaa; font-style: italic">// set your div where video will be seen</span>
                  };
@@ -50,17 +60,17 @@
 
 <br />
                     or a more complicated example where a YouTube video is displayed while the customer is waiting for an agent:<br /><br />
-                    <!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #4c8317">&lt;!DOCTYPE html&gt;</span>
+                    <!-- HTML generated using hilite.me --><pre style="padding: 20px; margin: 20px; line-height: 125%"><span style="color: #4c8317">&lt;!DOCTYPE html&gt;</span>
  <span style="color: #1e90ff; font-weight: bold">&lt;html&gt;</span>
      <span style="color: #1e90ff; font-weight: bold">&lt;head&gt;</span>
          <span style="color: #aaaaaa; font-style: italic">&lt;!-- add this script to your webpage wherever call me functionality is desired --&gt;</span>
-         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;http://172.16.2.233:8080/js/VidyoIOAgent.js&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/script&gt;</span>
+         <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">src=</span><span style="color: #aa5500">&quot;https://callme.app.vidyo.io/js/VidyoIOAgent.js&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/script&gt;</span>
 
          <span style="color: #aaaaaa; font-style: italic">&lt;!-- the vidyoIOAgent method that will start a call --&gt;</span>
          <span style="color: #1e90ff; font-weight: bold">&lt;script </span><span style="color: #1e90ff">type=</span><span style="color: #aa5500">&quot;text/javascript&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
              <span style="color: #0000aa">function</span> callMe() {
                  <span style="color: #0000aa">var</span> config = {
-                     appUrl: <span style="color: #aa5500">&quot;http://172.16.2.233:8080&quot;</span>,
+                     appUrl: <span style="color: #aa5500">&quot;https://callme.app.vidyo.io&quot;</span>,
                      appKey: <span style="color: #aa5500">&quot;hnq32BAs&quot;</span>,         <span style="color: #aaaaaa; font-style: italic">// set your appKey here</span>
                      viewId: <span style="color: #aa5500">&quot;vidyoIOAgentView&quot;</span>, <span style="color: #aaaaaa; font-style: italic">// set your div where video will be seen</span>
                      onUserJoined : <span style="color: #0000aa">function</span>() {
@@ -101,6 +111,12 @@
  <span style="color: #1e90ff; font-weight: bold">&lt;/html&gt;</span>
 </pre>
 
+                    <h2>Notes</h2>
+                    <ul>
+                    <li>Callme works on browsers that support WebRTC and plugins only.</li>
+                    <li>Your vidyo.io Application ID and Developer Key are kept private at all times. The only thing visible in Javascript code is your callme App Key. Misuse of your App Key is prevented via Referrer Header checking. It is strongly recommended to setup Referrer checking by filling out the hostname of your server or servers where you will enable callme.</li>
+                    <li>If you need more features than those available, this application is open-source and you can modify it as you need on <a href="https://github.com/Vidyo/callme-web-app-java">GitHub</a>.</li>
+                    </ul>
                 </div>
 
              </div>
